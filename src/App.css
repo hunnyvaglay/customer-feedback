@@ -1,0 +1,363 @@
+/* ------------------------------------
+   GLOBAL RESET + RESPONSIVE FIX
+---------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* makes REM responsive */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", "Inter", "Segoe UI", Tahoma, sans-serif;
+  background-color: #1da8d5;
+  overflow-x: hidden; /* allow vertical scroll on small phones */
+}
+
+
+/* ------------------------------------
+   PAGE CONTAINER (RESPONSIVE CENTERING)
+---------------------------------------*/
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5rem;
+
+  position: relative;
+  overflow: visible;
+
+  /* ⭐ Default on larger screens → horizontal layout */
+  flex-direction: row;
+  gap: 2rem;
+}
+
+
+.page-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  background-image: url("/background.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+
+/* ------------------------------------
+   FORM CARD — FULLY RESPONSIVE
+---------------------------------------*/
+.form-card {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 2.5rem;
+  border-radius: 48px;
+  max-width: 500px;
+  line-height: 1.6;
+  width: 100%;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.6s ease-out;
+}
+/* CS SPOC input — consistent typography */
+input[name="csSpoc"] {
+  font-family: Garamond, serif;
+}
+
+/* Placeholder styling for professionalism */
+input[name="csSpoc"]::placeholder {
+  color: #444;
+  opacity: 0.8;
+  font-family: Garamond, serif;
+}
+
+
+.subtext {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #555;
+  font-size: 0.95rem;
+  font-family: Garamond, serif;
+  font-weight: 400;
+}
+
+.form-card h1 {
+  color: #1da8d5;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  font-family: Garamond, serif;
+  text-align: center;
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+
+/* ------------------------------------
+   INPUTS — RESPONSIVE FIX
+---------------------------------------*/
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  /* padding: 0.9rem 1rem; */
+  margin: 1.2rem 0;
+  border: 1px solid #bcdff0;
+   padding: 1rem 1.1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+    border-radius: 14px;
+  font-family: Garamond, serif;
+  transition: 0.2s;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  border-color: #1da8d5;
+  box-shadow: 0 0 0 3px rgba(29, 168, 213, 0.25);
+  outline: none;
+}
+
+
+/* ------------------------------------
+   RESPONSIVE BUTTON
+---------------------------------------*/
+.button-div {
+  text-align: center;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1da8d5, #1593bb);
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  /* font-weight: 600; */
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 1.2rem;
+  padding: 1.1rem;
+  font-weight: 700;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 260%;
+  height: 260%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(35deg);
+  transition: 0.4s ease;
+}
+
+.submit-btn:hover::before {
+  top: -20%;
+  left: -20%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(29,168,213,0.35);
+}
+
+
+/* ------------------------------------
+   STARS — RESPONSIVE
+---------------------------------------*/
+.rating-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.stars-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0.5rem 0 1.5rem 0;
+    padding: 0.5rem 0;
+
+  /* 🔧 NEW: Prevent stars from overflowing on small screens */
+  justify-content: center; 
+}
+
+.star {
+  font-size: 2rem;
+  color: #ccc;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.star:hover {
+  /* transform: scale(1.2); */
+    transform: scale(1.25) rotate(3deg);
+
+}
+
+.star.filled {
+  /* color: gold; */
+    color: #f1c40f; /* richer gold */
+}
+
+
+/* ------------------------------------
+   MASCOT POPUP
+---------------------------------------*/
+.mascot-popup {
+  position: absolute;
+  top: 40%; /* 🔧 BETTER POSITION ON SMALL SCREENS */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: auto;
+  animation: pop 0.4s ease-out;
+  pointer-events: none;
+}
+.status {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #1da8d5;
+  animation: fadeOut 2s ease-in forwards;
+}
+
+
+
+.mascot-popup img {
+  width: 80px;
+  filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.2));
+}
+
+.thank-text {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  animation: fadeOut 1.2s ease-in 1.4s forwards;
+}
+
+
+/* ------------------------------------
+   ANIMATIONS
+---------------------------------------*/
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+
+/* ------------------------------------
+   MOBILE BREAKPOINT < 500px
+---------------------------------------*/
+
+@media (max-width: 350px) {
+  .form-card {
+    padding: 1.2rem;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 90%;
+  }
+
+  .form-card {
+    padding: 1.8rem;
+    border-radius: 32px;
+  }
+
+  .star {
+    font-size: 1.7rem; /* 🛠 prevents wrapping issues */
+  }
+
+  .mascot-popup img {
+    width: 65px;
+  }
+}
+
+
+/* ------------------------------------
+   EXTRA SMALL PHONE FIX < 360px
+---------------------------------------*/
+@media (max-width: 360px) {
+  .form-card {
+    padding: 1.4rem; /* 🔧 smaller padding for tiny screens */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+
+  .star {
+    font-size: 1.5rem;
+  }
+
+  .form-card h1 {
+    font-size: 1.4rem;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    padding: 0.85rem;
+  }
+}
+.form-card label {
+  font-family: Garamond, serif !important;
+    /* font-size: 1rem; */
+      /* font-weight: 600; */
+
+font-size: 1.05rem;
+  font-weight: 700;
+}
+
+
+
+/* ------------------------------------
+   LARGE LAPTOPS & DESKTOPS
+---------------------------------------*/
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .page-container::before {
+    top: 20%; /* move watermark up for mobile */
+    width: 180px;
+    height: 180px;
+  }
+}

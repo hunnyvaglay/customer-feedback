@@ -1,0 +1,97 @@
+:root {
+  font-family: Garamond;
+  line-height: 1.5;
+  font-weight: 800;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: gri;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+  align-items: center;
+}
+button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #fff;
+  background: linear-gradient(135deg, #1da8d5, #1593bb);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover glow & lift */
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(29, 168, 213, 0.35);
+}
+
+/* Shine animation */
+button::before {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  width: 250%;
+  height: 250%;
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(35deg);
+  transition: 0.45s ease;
+}
+
+button:hover::before {
+  top: -20%;
+  left: -20%;
+}
+
+/* Ripple click effect */
+button:active {
+  transform: scale(0.97);
+}
+
+button:active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: inherit;
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  from { opacity: 1; transform: scale(0.8); }
+  to   { opacity: 0; transform: scale(1.3); }
+}
